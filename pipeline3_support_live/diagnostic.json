@@ -1,0 +1,24 @@
+{
+    "now": "2025-08-17T21:26:29.905Z",
+    "perfNow": 11881219.599999994,
+    "diagnosticCorrelation": "d7a3c92b-76a8-4beb-ab5a-d71caf7fdfd7",
+    "source": "DownloadSupportFiles",
+    "environment": {
+        "productName": "adf",
+        "buildVersion": "1.0.080125.5",
+        "environmentType": 3,
+        "resourceName": "adflearntalhaK",
+        "resourceRegion": "eastus",
+        "resourceGroup": "adf",
+        "subscriptionId": "2c53ec62-c914-44cb-8651-b4438cf80995",
+        "sessionId": "x0PD2oA97RPnRUrv6T38Sy",
+        "operationId": "",
+        "gitType": "live",
+        "loggingKey": "1e2d7b58-35f0-4a97-874a-80f747f91464"
+    },
+    "additionalInfo": {
+        "selectedResource": "pipeline3",
+        "selectedResourceType": "pipeline",
+        "dataFlowSessionId": "420cea66-5aa5-47c3-b225-9915d68e41e7"
+    }
+}

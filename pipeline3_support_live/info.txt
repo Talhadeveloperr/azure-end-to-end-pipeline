@@ -1,0 +1,7 @@
+selected resource name:		pipeline3
+selected resource type:		pipeline
+factory name:			adflearntalhaK
+factory location:		eastus
+subscription id:		2c53ec62-c914-44cb-8651-b4438cf80995
+data flow session id:		420cea66-5aa5-47c3-b225-9915d68e41e7
+time of download (UTC):		Sun, 17 Aug 2025 21:26:29 GMT

@@ -1,0 +1,134 @@
+{
+    "name": "transform_csv",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "data_flow_src",
+                        "type": "DatasetReference"
+                    },
+                    "name": "sourcecsv"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "DelimitedText6",
+                        "type": "DatasetReference"
+                    },
+                    "name": "sink1"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "selectCol"
+                },
+                {
+                    "name": "filterRows"
+                },
+                {
+                    "name": "split1"
+                }
+            ],
+            "scriptLines": [
+                "source(output(",
+                "          ORDERNUMBER as short,",
+                "          QUANTITYORDERED as short,",
+                "          PRICEEACH as double,",
+                "          ORDERLINENUMBER as short,",
+                "          SALES as double,",
+                "          ORDERDATE as timestamp,",
+                "          STATUS as string,",
+                "          QTR_ID as short,",
+                "          MONTH_ID as short,",
+                "          YEAR_ID as short,",
+                "          PRODUCTLINE as string,",
+                "          MSRP as short,",
+                "          PRODUCTCODE as string,",
+                "          CUSTOMERNAME as string,",
+                "          PHONE as string,",
+                "          ADDRESSLINE1 as string,",
+                "          ADDRESSLINE2 as string,",
+                "          CITY as string,",
+                "          STATE as string,",
+                "          POSTALCODE as string,",
+                "          COUNTRY as string,",
+                "          TERRITORY as string,",
+                "          CONTACTLASTNAME as string,",
+                "          CONTACTFIRSTNAME as string,",
+                "          DEALSIZE as string",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     ignoreNoFilesFound: false) ~> sourcecsv",
+                "sourcecsv select(mapColumn(",
+                "          ORDERNUMBER,",
+                "          QUANTITYORDERED,",
+                "          PRICEEACH,",
+                "          ORDERLINENUMBER,",
+                "          SALES,",
+                "          ORDERDATE,",
+                "          STATUS,",
+                "          QTR_ID,",
+                "          MONTH_ID,",
+                "          YEAR_ID,",
+                "          PRODUCTLINE,",
+                "          MSRP,",
+                "          PRODUCTCODE,",
+                "          CUSTOMERNAME,",
+                "          PHONE,",
+                "          ADDRESSLINE1,",
+                "          CITY,",
+                "          STATE,",
+                "          COUNTRY,",
+                "          CONTACTLASTNAME,",
+                "          CONTACTFIRSTNAME,",
+                "          DEALSIZE",
+                "     ),",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> selectCol",
+                "selectCol filter(YEAR_ID !=2004) ~> filterRows",
+                "filterRows split(STATUS == 'Shipped',",
+                "     STATUS =='Disputed',",
+                "     STATUS =='Cancelled',",
+                "     disjoint: false) ~> split1@(Shipped, Disputed, Cancelled, otherthan)",
+                "sourcecsv sink(allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     input(",
+                "          ORDERNUMBER as string,",
+                "          QUANTITYORDERED as string,",
+                "          PRICEEACH as string,",
+                "          ORDERLINENUMBER as string,",
+                "          SALES as string,",
+                "          ORDERDATE as string,",
+                "          STATUS as string,",
+                "          QTR_ID as string,",
+                "          MONTH_ID as string,",
+                "          YEAR_ID as string,",
+                "          PRODUCTLINE as string,",
+                "          MSRP as string,",
+                "          PRODUCTCODE as string,",
+                "          CUSTOMERNAME as string,",
+                "          PHONE as string,",
+                "          ADDRESSLINE1 as string,",
+                "          ADDRESSLINE2 as string,",
+                "          CITY as string,",
+                "          STATE as string,",
+                "          POSTALCODE as string,",
+                "          COUNTRY as string,",
+                "          TERRITORY as string,",
+                "          CONTACTLASTNAME as string,",
+                "          CONTACTFIRSTNAME as string,",
+                "          DEALSIZE as string",
+                "     ),",
+                "     umask: 0022,",
+                "     preCommands: [],",
+                "     postCommands: [],",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> sink1"
+            ]
+        }
+    }
+}
