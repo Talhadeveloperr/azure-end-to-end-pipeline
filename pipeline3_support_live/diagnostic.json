@@ -10,11 +10,11 @@
         "resourceName": "adflearntalhaK",
         "resourceRegion": "eastus",
         "resourceGroup": "adf",
-        "subscriptionId": "2c53ec62-c914-44cb-8651-b4438cf80995",
-        "sessionId": "x0PD2oA97RPnRUrv6T38Sy",
+        "subscriptionId": "",
+        "sessionId": "",
         "operationId": "",
         "gitType": "live",
-        "loggingKey": "1e2d7b58-35f0-4a97-874a-80f747f91464"
+        "loggingKey": ""
     },
     "additionalInfo": {
         "selectedResource": "pipeline3",
